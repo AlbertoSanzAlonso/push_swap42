@@ -16,8 +16,8 @@ El programa imprime la secuencia de instrucciones más corta posible para dejar 
 
 ## 👥 Autores
 
-* **Alberto Sanz Alonso** ([@asanz-al](https://github.com/asanz-al))
-* **Ángel Martínez** ([@anmarti2](https://github.com/anmarti2))
+* **Alberto Sanz Alonso** ([@asanz-al](https://github.com/AlbertoSanzAlonso))
+* **Andreu Martins** ([@anmarti2](https://github.com/6xhky))
 
 ---
 
