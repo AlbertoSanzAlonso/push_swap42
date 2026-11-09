@@ -6,7 +6,7 @@
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:04:21 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/09 17:12:07 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/09 21:09:32 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,25 @@ void free_stack(t_stack **stack)
         *stack = tmp;
     }
     *stack = NULL;
+}
+
+float	compute_disorder(f_stack *stack)
+{
+	float	mistakes;
+	float	total_pairs;
+	f_stack	*cmp;
+	
+	mistakes = 0;
+	total_pairs = 0;
+	while (stack && stack->next)
+	{	
+		cmp = stack->next;
+		total_pairs += 1;
+		if(stack->number > cmp->number)
+			mistakes += 1;
+		stack = stack->next;
+	}
+	if (total_pairs == 0)
+		return (0);
+	return (mistakes / total_pairs);
 }

@@ -6,7 +6,7 @@
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:27:06 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/09 16:38:08 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/09 21:09:59 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef	struct	s_stack
 {
-	int	content;
+	int	number;
 	s_stack	*next;
 }	t_stack;
 
@@ -35,5 +35,10 @@ int	safe_atoi(char *s, int *out);
 int	is_valid_int(char *s);
 int	parse_args(int argc, char **argv, int *arr);
 int	has_duplicates(int *arr, int n);
+float	compute_disorder(f_stack *stack);
+void	free_stack(t_stack·**stack)$;
+void	push_ab(t_stack **dst, t_stack **src);
+void	rotate_up(t_stack·**stack)$;
+void	swap_ab(t_stack **stack);
 
 #endif
