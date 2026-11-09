@@ -6,7 +6,7 @@
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:27:06 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/09 22:04:55 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/09 22:09:36 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ int	safe_atoi(char *s, int *out);
 int	is_valid_int(char *s);
 int	parse_args(int argc, char **argv, int *arr);
 int	has_duplicates(int *arr, int n);
-void	rotate_up(t_stack **stack);
-void    rotate_up_all(t_stack **b, t_stack **a);
-void    reverse_rot(t_stack **stack);
-void    reverse_rot_all(t_stack **b, t_stack **a);
+float	compute_disorder(f_stack *stack);
+void	free_stack(t_stack·**stack)$;
 void	push(t_stack **dst, t_stack **src);
+void	rotate_up(t_stack·**stack);
+void	rotate_up_all(t_stack **b, t_stack **a);
+void	reverse_rot(t_stack **stack);
+void	reverse_rot_all(t_stack **b, t_stack **a);
 void	swap(t_stack **stack);
 void	swap_all(t_stack **b, t_stack **a);
 

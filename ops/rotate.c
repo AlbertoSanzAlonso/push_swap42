@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_up.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 18:32:51 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/09 21:46:19 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/09 22:03:01 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ void	rotate_up(t_stack **stack)
 	current->next = tmp;
 }
 
-void	reverse_rotate(t_stack **stack)
+void	rotate_up_all(t_stack **b, t_stack **a)
+{
+	if (!a || !*a || !b || !*b)
+		return ;
+	rotate_up(a);
+	rotate_up(b);
+}
+
+void	reverse_rot(t_stack **stack)
 {
 	t_stack *last;
 	t_stack *second_last
@@ -43,4 +51,12 @@ void	reverse_rotate(t_stack **stack)
 	second_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
+}
+
+void	reverse_rot_all(t_stack **b, t_stack **a)
+{
+	if (!a || !*a || !b || !*b)
+		return ;
+	reverse_rot(a);
+	reverse_rot(b);
 }
