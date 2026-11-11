@@ -1,6 +1,4 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "push_swap.h"
 
 int	safe_atoi(char *s, int *out)
 {
@@ -50,14 +48,14 @@ int	is_valid_int(char *s)
 int	parse_args(int argc, char **argv, int *arr)
 {
 	int	i;
+	int	k;
 
 	i = 1;
+	k = 0;
 	while (i < argc)
 	{
-		if (!is_valid_int(argv[i]))
-			return (0);
-		if (!safe_atoi(argv[i], &arr[i - 1]))
-			return (0);
+		if (!parse_one(argv[i], arr, &k))
+			return(0);
 		i++;
 	}
 	return (1);
@@ -82,29 +80,81 @@ int	has_duplicates(int *arr, int n)
 	}
 	return (0);
 }
-/*
-int	main(int argc, char **argv)
+
+void	free_split(char **s)
 {
-	int	*arr;
 	int	i;
 
 	i = 0;
-	if (argc == 1)
-		return (0);
-	arr = malloc(sizeof(int) * (argc - 1));
-	if (!arr)
-		return (1);
-	if (!parse_args(argc, argv, arr) || has_duplicates(arr, argc - 1))
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		free(arr);
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	while (i < argc - 1)
-	{
-		printf("%d\n", arr[i]);
+		free(s[i]);
 		i++;
 	}
-	free(arr);
-	return (0);
-}*/
+	free(s);
+}
+
+int	counted_args(char *s)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		if (s[i] != ' ' && (i == 0 || s[i - 1] == ' '))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int	count_total(int ac, char **av)
+{
+	int	i;
+	int	n;
+	int	total;
+
+	i = 1;
+	total = 0;
+	while (i < ac)
+	{
+		n = counted_args(av[i]);
+		if (n == 0)
+			return (0);
+		total += n;
+		i++;
+	}
+	return (total);
+}
+
+int	parse_one(char *arg, int *arr, int *k)
+{
+	int		i;
+	char	**split;
+
+	i = 0;
+	split = ft_split(arg, ' ');
+	if (!split)
+		return (0);
+	while (split[i])
+	{
+		if (!is_valid_int(split[i]))
+		{
+			free_split(split);
+			return (0);
+		}
+		if (!safe_atoi(split[i], &arr[*k]))
+		{
+			free_split(split);
+			return (0);
+		}
+		*k += 1;
+		i++;
+	}
+	free_split(split);
+	return (1);
+}

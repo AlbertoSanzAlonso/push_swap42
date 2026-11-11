@@ -12,8 +12,35 @@
 
 #include "push_swap.h"
 
-int	main()
+int	main(int argc, char **argv)
 {
-	ft_printf("Esto es una prueba");
+	int	*arr;
+	int	i;
+	int	n;
+
+	if (argc == 1)
+		return (0);
+	n = count_total(argc, argv);
+	if (n == 0)
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	arr = malloc(sizeof(int) * n);
+	if (!arr)
+		return (1);
+	if (!parse_args(argc, argv, arr) || has_duplicates(arr, n))
+	{
+		free(arr);
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	i = 0;
+	while (i < n)
+	{
+		printf("%d\n", arr[i]);
+		i++;
+	}
+	free(arr);
 	return (0);
 }

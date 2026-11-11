@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stddef.h>
 # include "lib/ft_printf.h"
 
 typedef	struct	s_stack
@@ -47,6 +48,17 @@ void	swap(t_stack **stack);
 void	swap_all(t_stack **b, t_stack **a);
 char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
+int		count_total(int argc, char **argv);
+int		parse_one(char *arg, int *arr, int *k);
+int		counted_args(char *s);
+int		parse_args(int argc, char **argv, int *arr);
+int		is_valid_int(char *s);
+int		safe_atoi(char *s, int *out);
+int		has_duplicates(int *arr, int n);
+void	free_split(char **s);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif
