@@ -1,6 +1,58 @@
 #include "../push_swap.h"
 
-void  simple_sort(t_stack **b, t_stack **a, t_opscount *counter)
+static void    simple_sort_two(t_stack **a, t_opscount *counter)
+{
+    if (stacklen(*a) == 1)
+           return ;
+    else
+    {
+        while (*a)
+        {
+            if ((*a)->number > (*a)->next->number)
+            {
+               swap(a);
+               counter->sa++;
+            }
+            *a = (*a)->next;
+        }
+}
+
+static void    simple_sort_three(t_stack **a, t_opscount *counter)
+{
+    t_stack    *first;
+    t_stack    *second;
+    t_stack    *third;
+    t_stack    *current;
+
+    first = *a;
+    second = (*a)->next;
+    third = second->next;
+    current = NULL;
+    if (first > second && second > third)
+    {
+        reverse_rot(a);
+        swap(a);
+        counter->rra++;
+        counter->sa++
+    }
+    if (first < second && second > third)
+    {
+        rotate_up(a);
+        swap(a);
+        counter->ra++;
+        counter->sa++;
+    }
+    if (first < second && second > third)
+    {
+        rotate_up(a);
+        counter->ra++;
+    }
+    return ;
+}
+
+
+
+static void    simple_sort_big(t_stack **b, t_stack **a, t_opscount *counter)
 {
     int    changes;
     
@@ -12,7 +64,7 @@ void  simple_sort(t_stack **b, t_stack **a, t_opscount *counter)
         changes = 0;
         while (*a && (*a)->next)
         {
-            if ((*a)->content > (*a)->next->content)
+            if ((*a)->number > (*a)->next->number)
             {
                 swap(a);
                 counter->sa++;
@@ -28,7 +80,7 @@ void  simple_sort(t_stack **b, t_stack **a, t_opscount *counter)
         }
          while (*b && (*b)->next)
         {
-            if ((*b)->content > (*b)->next->content)
+            if ((*b)->number > (*b)->next->number)
             {
                 swap(b);
                 counter->sb++;
@@ -43,3 +95,17 @@ void  simple_sort(t_stack **b, t_stack **a, t_opscount *counter)
             counter->pa++;
         }
     }
+}
+
+void    simple_sort(t_stack **b, t_stack **a, t_opscount **counter)
+{
+    if (!a || !b)
+        return ;
+    if (stacklen(a) > 3)
+        simple_sort_big(b, a, counter);
+    if (stacklen(a) == 2)
+        simple_sort_two(a, counter);
+    if (stacklen(a) == 3)
+        simple_sort_three(a, counter);
+}
+
