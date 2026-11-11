@@ -12,7 +12,22 @@
 
 #include "push_swap.h"
 
-void free_stack(t_stack **stack)
+int    stack_len(t_stack *stack)
+{
+    int    len;
+
+    if (!stack)
+        return (0);
+    len = 0;
+    while (stack)
+    {
+        stack = stack->next;
+        len++;
+    }
+    return (len);
+}
+
+void    free_stack(t_stack **stack)
 {
 	t_stack *tmp;
 
