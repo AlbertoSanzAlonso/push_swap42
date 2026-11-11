@@ -32,6 +32,21 @@ typedef struct s_ctx
 	int	ops[11];
 }	t_ctx;
 
+typedef struct s_opscount
+{
+    int    sa;
+    int    sb;
+    int    ss;
+    int    pa;
+    int    pb;
+    int    ra;
+    int    rb;
+    int    rr;
+    int    rra;
+    int    rrb;
+    int    rrr;
+}    t_opscount
+
 int	safe_atoi(char *s, int *out);
 int	is_valid_int(char *s);
 int	parse_args(int argc, char **argv, int *arr);
