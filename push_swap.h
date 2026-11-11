@@ -64,5 +64,6 @@ char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);
 int	ft_printf(const char *format, ...);
 void  simple_sort(t_stack **b, t_stack **a, t_opscount *counter);
+int    stack_len(t_stack *stack);
 
 #endif
