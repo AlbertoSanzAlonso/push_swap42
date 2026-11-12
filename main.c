@@ -14,12 +14,24 @@
 
 int	main(int argc, char **argv)
 {
-	int	*arr;
-	int	i;
-	int	n;
+	t_ctx	ctx;
+	int		*arr;
+	int		i;
+	int		n;
+	int		start;
 
 	if (argc == 1)
 		return (0);
+	start = parse_flags(argc, argv, &ctx);
+	if (start == -1)
+	{
+		write (2, "Error\n", 6);
+		return (0);
+	}
+	if (start >= argc)
+		return (0);
+	argc -= start - 1;
+	argv += start - 1;
 	n = count_total(argc, argv);
 	if (n == 0)
 	{

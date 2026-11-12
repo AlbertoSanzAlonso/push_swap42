@@ -55,7 +55,7 @@ int	parse_args(int argc, char **argv, int *arr)
 	while (i < argc)
 	{
 		if (!parse_one(argv[i], arr, &k))
-			return(0);
+			return (0);
 		i++;
 	}
 	return (1);

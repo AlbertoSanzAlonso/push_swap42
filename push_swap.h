@@ -24,19 +24,29 @@ typedef	struct	s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef enum e_strategy
+{
+	STRAT_ADAPTIVE,
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX
+}	t_strategy;
+
 typedef struct s_ctx
 {
-	t_stack *a;
-	t_stack *b;
-	int	n;
-	float	disorder;
-	int	ops[11];
+	t_stack		*a;
+	t_stack		*b;
+	int			n;
+	float		disorder;
+	int			ops[11];
+	t_strategy	strategy;
+	int			bench;
 }	t_ctx;
 
-int	safe_atoi(char *s, int *out);
-int	is_valid_int(char *s);
-int	parse_args(int argc, char **argv, int *arr);
-int	has_duplicates(int *arr, int n);
+int		safe_atoi(char *s, int *out);
+int		is_valid_int(char *s);
+int		parse_args(int argc, char **argv, int *arr);
+int		has_duplicates(int *arr, int n);
 float	compute_disorder(t_stack *stack);
 void	free_stack(t_stack **stack);
 void	push(t_stack **dst, t_stack **src);
@@ -60,5 +70,11 @@ void	free_split(char **s);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
+int		ft_strcmp(const char *s1, const char *s2);
+
+// flags
+
+int	set_flag(char *s, t_ctx *ctx);
+int	parse_flags(int argc, char **argv, t_ctx *ctx);
 
 #endif
