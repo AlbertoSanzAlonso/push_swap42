@@ -6,12 +6,12 @@
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 12:24:44 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/10 12:24:49 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/12 07:56:54 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
+/*
 void	adaptative_sort(t_stack **b, t_stack **a)
 {
 	t_stack	*current;
