@@ -12,34 +12,36 @@
 
 #include "../push_swap.h"
 
-void	rotate_up(t_stack **stack)
+void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*current;
 
-	if (!stack || !*stack)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	tmp = *stack;
 	current = *stack;
 	while (current && current->next != NULL)
 		current = current->next;
-	current->next = tmp;
+    *stack = (*stack)->next;
+    current->next = tmp;
+    tmp->next = NULL;
 }
 
-void	rotate_up_all(t_stack **b, t_stack **a)
+void	rotate_all(t_stack **b, t_stack **a)
 {
-	if (!a || !*a || !b || !*b)
+	if (!a || !*a || !(*a)->next || !b || !*b || !(*b)->next)
 		return ;
-	rotate_up(a);
-	rotate_up(b);
+	rotate(a);
+	rotate(b);
 }
 
-void	reverse_rot(t_stack **stack)
+void	rotate_rev(t_stack **stack)
 {
 	t_stack *last;
-	t_stack *second_last
+	t_stack *second_last;
 
-	if (!stack || !*stack)
+	if (!stack || !*stack || !(*stak)->next)
 		return ;
 	second_last = NULL;
 	last = *stack;
@@ -53,10 +55,10 @@ void	reverse_rot(t_stack **stack)
 	*stack = last;
 }
 
-void	reverse_rot_all(t_stack **b, t_stack **a)
+void	rotate_rev_all(t_stack **b, t_stack **a)
 {
-	if (!a || !*a || !b || !*b)
+	if (!a || !*a || !(*a)->next || !b || !*b || !(*b)->next)
 		return ;
-	reverse_rot(a);
-	reverse_rot(b);
+	rotate_rev(a);
+	rotate_rev(b);
 }
