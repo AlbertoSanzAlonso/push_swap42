@@ -6,7 +6,7 @@
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:27:06 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/09 22:09:36 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/18 18:40:02 by asanz-al         ###   ########.fr       */
 /*   Updated: 2026/11/10 13:55:50 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -61,18 +61,21 @@ void	free_stack(t_stack·**stack);
 
 // Utils
 
+int    stack_len(t_stack *stack);
 char	**ft_split(char const *s, char c);
+void	free_stack(t_stack **stack);
+float	compute_disorder(t_stack *stack);
 char	*ft_strtrim(char const *s1, char const *set);
 int	ft_printf(const char *format, ...);
-int    stack_len(t_stack *stack);
 
 // Operations
 
-void	push(t_stack **dst, t_stack **src);
-void	swap(t_stack **stack);
-void	rotate(t_stack **stack);
+void	push(t_stack **dst, t_stack **src, char letter);
+void	swap(t_stack **stack, char letter);
+void	swap_all(t_stack **b, t_stack **a);
+void	rotate(t_stack **stack, char letter);
 void	rotate_all(t_stack **b, t_stack **a);
-void	rotate_rev(t_stack **stack);
+void	rotate_rev(t_stack **stack, char letter);
 void	rotate_rev_all(t_stack **b, t_stack **a);
 
 // Algoritms
