@@ -6,7 +6,7 @@
 /*   By: asanz-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 20:27:30 by asanz-al          #+#    #+#             */
-/*   Updated: 2026/11/16 20:38:23 by asanz-al         ###   ########.fr       */
+/*   Updated: 2026/11/18 18:20:46 by asanz-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,38 @@ static int get_max_bits(t_stack **node)
 
 void    complex_sort(t_stack **a, t_stack **b, t_opscount *ops_counter, int max_bits)
 {
-    int    bits_pos;
-    t_stack    *current;
+    int	bits_pos;
+	int	stacklen;
+	int	i;
 
-    if(!a || !*a | !b)
+    if(!a || !*a || !b)
         return ;
     bits_pos = 0;
-    current = *a;
+	stacklen = stack_len(*a);
+	i = 0;
     while (bits_pos < max_bits)
     {
-        while (current)
+        while (i < stacklen)
         {
-            if ((current->pos_rel >> bits_pos & 1) == 0)
+            if ((((*a)->pos_rel >> bits_pos) & 1) == 0)
             {
-                push(b, a);
-                ops_counter->pa;
+				push(b, a, 'a');
+                ops_counter->pb++;
             }
             else
             {
                 reverse_rot(a);
-                ops_counter->rra;
+                ops_counter->rra++;
             }
-        current = current->next;
+		i++;
         }
+		while (*b)
+		{
+			push(a, b, 'b');
+			ops_counter->pa++;
+			i--;
+		}
         bits_pos++;
+		i = 0;
     }
 }
-            
-
